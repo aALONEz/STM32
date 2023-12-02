@@ -655,6 +655,16 @@
               <FileType>5</FileType>
               <FilePath>.\HeaderFiles\Delay.h</FilePath>
             </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HeaderFiles\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HeaderFiles\OLED_Font.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -664,6 +674,11 @@
               <FileName>Delay.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SourceFiles\Delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SourceFiles\OLED.c</FilePath>
             </File>
           </Files>
         </Group>
