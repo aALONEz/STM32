@@ -12,25 +12,25 @@ int main(void)
 	
 	//初始化GPIOA Pin1引脚为输出模式作为PWM输出引脚,这里使用LED检测定时器输出PWM,正常的话LED会有呼吸效果
 	//使能GPIO时钟
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//使能GPIOA时钟,我这里LED链接的是PA1,低电平使能
 	
 	//初始化GPIO
 	GPIO_InitTypeDef GPIO_InitStruct;
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;//这里作为PWM输出引脚要设置为复用推挽输出模式,而不是推挽输出模式.具体是因为只有复用开漏或者推挽输出模式下IO口的输出才能交给片上外设
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1;
-	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1;//LED链接的引脚
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;//输出电平翻转速率
 	
 	GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
 	while(1)
 	{
 		//调用TIM_SetCompare2函数在循环中不断更改CCR的值,以达到呼吸灯的效果
-		for(i = 0; i <= 100; i++)
+		for(i = 0; i <= 100; i++)//逐渐亮
 		{
 			TIM_SetCompare2(TIM2, i);
 			Delay_ms(10);//延时10ms以保证看到效果
 		}
-		for(i = 0; i <= 100; i++)
+		for(i = 0; i <= 100; i++)//逐渐灭
 		{
 			TIM_SetCompare2(TIM2, 100 - i);
 			Delay_ms(10);//延时10ms以保证看到效果
