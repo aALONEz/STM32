@@ -2,21 +2,21 @@
 #include "OLED_Font.h"
 
 /*引脚配置*/
-#define OLED_W_SCL(x)		GPIO_WriteBit(GPIOD, GPIO_Pin_0, (BitAction)(x))
-#define OLED_W_SDA(x)		GPIO_WriteBit(GPIOD, GPIO_Pin_2, (BitAction)(x))
+#define OLED_W_SCL(x)		GPIO_WriteBit(GPIOE, GPIO_Pin_0, (BitAction)(x))
+#define OLED_W_SDA(x)		GPIO_WriteBit(GPIOE, GPIO_Pin_1, (BitAction)(x))
 
 /*引脚初始化*/
 void OLED_I2C_Init(void)
 {
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
- 	GPIO_Init(GPIOD, &GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
- 	GPIO_Init(GPIOD, &GPIO_InitStructure);
+ 	GPIO_Init(GPIOE, &GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+ 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 	
 	OLED_W_SCL(1);
 	OLED_W_SDA(1);
