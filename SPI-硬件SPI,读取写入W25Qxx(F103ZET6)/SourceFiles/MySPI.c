@@ -131,7 +131,7 @@ uint16_t MySPI_SwapByte(uint16_t SendData)//模式0
 	//将要发送的数据放到TxE,发送缓冲器中
 	SPI_I2S_SendData(SPI2, SendData);
 	//判断接收缓冲器的状态 为1非空,为0空
-	while(SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET);//不需要再手动清除标志位,当没有数据的时候会自动清0
+	while(SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_RXNE) == RESET);//不需要再手动清除标志位,当没有数据的时候会自动清0
 	//读取传送来的数据
 	ReceiveData = SPI_I2S_ReceiveData(SPI2);
 	
