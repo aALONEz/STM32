@@ -8,15 +8,15 @@ int main(void)
 	LED_Init();//LED初始化
 	while(1)
 	{
-		if(Get_Key_State() == 1)
+		if(Get_Key0_State() == 1)
 		{
-			if(Get_LED_State() == 1)
+			if(Get_LED0_State() == 1)
 			{
-				LED_Switch(OFF);
+				LED0_Switch(OFF);
 			}
 			else
 			{
-				LED_Switch(ON);
+				LED0_Switch(ON);
 			}
 		}
 	}

@@ -18,10 +18,10 @@ int main(void)
 	//3.设置为高电平
 	GPIO_SetBits(GPIOB, GPIO_Pin_12);
 	
-	//OLED初始化
-	OLED_Init();
-	//NRF24L01初始化
-	NRF24L01_Init();
+	
+	OLED_Init();//OLED初始化
+	
+	NRF24L01_Init();//NRF24L01初始化
 	//检查NRF24L01是否存在
 	OLED_ShowString(4, 1, "OFF");
 	if(NRF24L01_Check() == NRF24L01_EXIST)
@@ -30,27 +30,17 @@ int main(void)
 		OLED_ShowString(4, 1, "OK");
 	}
 	
-//	//初始化为发送模式
-//	NRF24L01_Tx_Mode_Init();
-//	
-//	TxBuf[0] = 0X11;
-//	TxBuf[1] = 0X12;
-//	TxBuf[2] = 0X13;
-//	TxBuf[3] = 0X14;
-//	TxBuf[4] = 0X15;
-//	OLED_ShowHexNum(1, 1, NRF24L01_TxPacket(TxBuf, 5), 2);
+	//初始化为发送模式
+	NRF24L01_Tx_Mode_Init();
 	
+	TxBuf[0] = 0X11;
+	TxBuf[1] = 0X12;
+	TxBuf[2] = 0X13;
+	TxBuf[3] = 0X14;
+	TxBuf[4] = 0X15;
 	
-	//初始化为接收模式
-	NRF24L01_Rx_Mode_Init();
-	//等待接收即可
 	while(1)
 	{
-		/*显示接收到的数据*/
-		OLED_ShowHexNum(2, 1, RxBuf[0], 2);
-		OLED_ShowHexNum(2, 3, RxBuf[1], 2);
-		OLED_ShowHexNum(2, 5, RxBuf[2], 2);
-		OLED_ShowHexNum(2, 7, RxBuf[3], 2);
-		OLED_ShowHexNum(2, 9, RxBuf[4], 2);
+		OLED_ShowHexNum(1, 1, NRF24L01_TxPacket(TxBuf, 5), 2);//循环发送,TxBuf中的五个字节
 	}
 }

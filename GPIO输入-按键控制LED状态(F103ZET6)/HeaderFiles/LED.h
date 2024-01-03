@@ -6,10 +6,12 @@
 */
 #define ON Bit_RESET
 #define OFF Bit_SET
-#define LED_Switch(x) GPIO_WriteBit(GPIOB, GPIO_Pin_5, x)
+#define LED0_Switch(x) GPIO_WriteBit(GPIOB, GPIO_Pin_5, x)
+#define LED1_Switch(x) GPIO_WriteBit(GPIOE, GPIO_Pin_5, x)
 
 void LED_Init(void);
-uint8_t Get_LED_State(void);
+uint8_t Get_LED0_State(void);
+uint8_t Get_LED1_State(void);
 
 
 #endif
